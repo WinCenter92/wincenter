@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>WinCenter – Règlement du tirage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Règlement du tirage WinCenter organisé par LePro." />
+  <style>
+    :root {
+      --bg-dark: #050816;
+      --primary: #2563eb;
+      --primary-soft: #1d4ed8;
+      --accent: #facc15;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-soft: #1f2937;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body {
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+    .header {
+      display:flex; justify-content:space-between; align-items:center;
+      margin-bottom:32px;
+    }
+    .logo { display:flex; align-items:center; gap:10px; }
+    .logo-mark {
+      width:38px; height:38px; border-radius:999px;
+      background: radial-gradient(circle at 30% 20%, #facc15, #f97316 35%, #1d4ed8 100%);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800; font-size:18px;
+      box-shadow:0 0 22px rgba(250,204,21,0.4);
+    }
+    .logo-text-main { font-weight:800; font-size:20px; text-transform:uppercase; letter-spacing:0.04em; }
+    .logo-text-sub { font-size:11px; text-transform:uppercase; color:var(--text-muted); letter-spacing:0.16em; }
+    .nav { display:flex; flex-wrap:wrap; gap:18px; font-size:14px; color:var(--text-muted); }
+    .nav a { position:relative; padding-bottom:2px; }
+    .nav a:hover,
+    .nav a.active { color:var(--text-main); }
+    .nav a::after {
+      content:""; position:absolute; left:0; bottom:-3px;
+      width:0; height:2px;
+      background:linear-gradient(90deg,#facc15,#22c55e);
+      transition:width .15s ease-out;
+    }
+    .nav a:hover::after,
+    .nav a.active::after { width:100%; }
+    .hero-title {
+      font-size: clamp(26px, 4vw, 34px);
+      line-height:1.2;
+      margin-bottom:10px;
+    }
+    .hero-subtitle {
+      font-size:14px;
+      color:var(--text-muted);
+      max-width:650px;
+      margin-bottom:18px;
+    }
+
+    .section {
+      margin-bottom:22px;
+      padding:16px 18px 18px;
+      border-radius:16px;
+      background:rgba(15,23,42,0.94);
+      border:1px solid rgba(31,41,55,0.95);
+    }
+    .section h2 {
+      font-size:17px;
+      margin-bottom:8px;
+    }
+    .section p {
+      font-size:14px;
+      color:var(--text-muted);
+      margin-bottom:6px;
+      line-height:1.45;
+    }
+    .section ul {
+      margin-left:18px;
+      margin-bottom:6px;
+    }
+    .section ul li {
+      font-size:14px;
+      color:var(--text-muted);
+      margin-bottom:4px;
+    }
+
+    .footer {
+      margin-top:22px;
+      padding-top:14px;
+      border-top:1px solid rgba(31,41,55,0.9);
+      font-size:11px;
+      color:var(--text-muted);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">W</div>
+        <div>
+          <div class="logo-text-main">WinCenter</div>
+          <div class="logo-text-sub">Le centre des gagnants</div>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Présentation</a>
+        <a href="wincenter_inscription.html">Inscription</a>
+        <a href="wincenter_reglement.html" class="active">Règlement</a>
+        <a href="wincenter_gagnants.html">Gagnants</a>
+        <a href="wincenter_contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section">
+        <h1 class="hero-title">Règlement du tirage WinCenter</h1>
+        <p class="hero-subtitle">
+          Le présent document constitue le règlement du tirage organisé sur le site WinCenter par <strong>LePro</strong>.
+          Il définit les règles de participation, les conditions d’attribution du lot et les droits et obligations des participants.
+          Ce texte est fourni à titre d’exemple pour ta maquette et doit être adapté et validé juridiquement avant toute utilisation réelle.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>1. Organisateur</h2>
+        <p>
+          Le tirage (ci-après “le Jeu”) est organisé par <strong>LePro</strong>, concepteur du site WinCenter, domicilié en France (ci-après “l’Organisateur”).
+        </p>
+        <p>
+          LePro met en place le Jeu via la plateforme en ligne WinCenter, accessible à l’adresse communiquée au public.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>2. Objet du Jeu</h2>
+        <p>
+          Le Jeu a pour objet de permettre à un participant de gagner un lot matériel, tel que décrit sur la page de présentation de WinCenter
+          (par exemple : “PlayStation 5 Slim neuve”).
+        </p>
+        <p>
+          Un seul gagnant est désigné pour chaque période de tirage. Le lot, les dates de participation et la date de tirage sont ceux affichés sur le site.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>3. Conditions de participation</h2>
+        <p>La participation au Jeu est ouverte à toute personne remplissant les conditions suivantes :</p>
+        <ul>
+          <li>être une personne physique âgée de 18 ans révolus ou plus ;</li>
+          <li>résider en France métropolitaine ;</li>
+          <li>disposer d’une adresse e-mail valide ;</li>
+          <li>disposer de la capacité juridique de contracter.</li>
+        </ul>
+        <p>Ne peuvent pas participer au Jeu :</p>
+        <ul>
+          <li>l’Organisateur (LePro) ;</li>
+          <li>toute personne ayant participé directement à l’organisation ou au développement du site ;</li>
+          <li>leurs conjoints, ascendants et descendants.</li>
+        </ul>
+        <p>
+          L’Organisateur se réserve le droit de demander tout justificatif permettant de vérifier l’identité, l’âge ou le domicile des participants.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>4. Modalités de participation</h2>
+        <p>Pour participer au Jeu, le participant doit :</p>
+        <ul>
+          <li>se rendre sur le site WinCenter ;</li>
+          <li>remplir le formulaire d’inscription en ligne en renseignant les informations demandées 
+              (nom, prénom, pseudo, adresse e-mail, numéro de téléphone, adresse postale complète, code postal, ville) ;</li>
+          <li>cocher la case d’acceptation du présent règlement ;</li>
+          <li>valider son inscription et procéder au paiement de la participation sur la page de paiement sécurisée.</li>
+        </ul>
+        <p>
+          Toute participation incomplète, illisible, erronée, transmise après la date de clôture, ou comportant des informations manifestement fausses
+          pourra être annulée par l’Organisateur, sans recours possible.
+        </p>
+        <p>
+          Toute tentative de participation multiple sous différentes identités, adresses e-mail ou pseudonymes pourra entraîner l’exclusion définitive du participant.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>5. Paiement et coût de participation</h2>
+        <p>
+          La participation au Jeu est conditionnée au paiement d’un montant indicatif de <strong>2&nbsp;€</strong> 
+          auquel peuvent s’ajouter des frais de traitement facturés par le prestataire de paiement (par exemple Stripe).
+        </p>
+        <p>
+          Le montant exact débité ainsi que le détail des frais éventuels sont indiqués sur la page de paiement du site WinCenter.
+        </p>
+        <p>
+          La participation ne peut en aucun cas être remboursée, sauf dans les cas expressément prévus au présent règlement,
+          notamment en cas d’annulation du Jeu pour absence d’atteinte du seuil minimal de participations ou en cas d’erreur
+          imputable à l’Organisateur.
+          Elle ne peut en particulier pas être remboursée si le participant n’est pas désigné gagnant ou s’il décide de se retirer
+          alors que le tirage est maintenu.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>6. Durée du Jeu et seuil minimal de participations</h2>
+        <p>
+          La période de participation au Jeu est définie sur le site WinCenter (dates d’ouverture et de clôture). 
+          Un tirage est réalisé pour chaque période de Jeu, à la date annoncée sur la page de présentation.
+        </p>
+        <p>
+          Pour garantir un fonctionnement équitable et limiter les risques de déséquilibre financier, chaque session de Jeu est
+          soumise à un <strong>seuil minimal de participations payées</strong>. À titre indicatif, pour une session comprenant un
+          <strong>maximum de 3000 places</strong>, le tirage est maintenu dès que <strong>au moins 1000 participations payées</strong>
+          (soit un tiers des places) ont été valablement enregistrées.
+        </p>
+        <p>
+          Si, à la date de clôture de la période de participation, ce seuil minimal n’est pas atteint, l’Organisateur annulera le tirage
+          pour la session concernée. Dans ce cas, l’ensemble des participations payées pour cette session seront intégralement remboursées
+          aux participants, selon les modalités techniques offertes par le prestataire de paiement, et aucun lot ne sera attribué pour cette session.
+        </p>
+        <p>
+          L’Organisateur se réserve la possibilité de modifier les dates du Jeu ou les modalités de seuil minimal en cas de nécessité
+          (problème technique, logistique, changement de lot, etc.), à condition d’en informer les participants par une mise à jour sur le site,
+          avant la clôture de la période en cours.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>7. Désignation du gagnant</h2>
+        <p>
+          À l’issue de la période de participation, l’Organisateur procède à la désignation d’un gagnant parmi l’ensemble des participations valides,
+          selon une méthode de tirage au sort déterminée par LePro.
+        </p>
+        <p>
+          Le gagnant est contacté par e-mail à l’adresse indiquée lors de son inscription. Il devra confirmer ses coordonnées
+          dans un délai raisonnable (par exemple 7 jours) à compter de l’envoi du message.
+        </p>
+        <p>
+          En l’absence de réponse dans ce délai, ou en cas d’impossibilité de livrer le lot en raison d’informations incorrectes,
+          l’Organisateur pourra désigner un autre gagnant ou annuler la remise du lot pour cette session.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>8. Description du lot</h2>
+        <p>
+          Le lot mis en jeu pour chaque période est décrit sur la page de présentation de WinCenter
+          (par exemple : “PlayStation 5 Slim neuve, valeur indicative à préciser”).
+        </p>
+        <p>
+          Le lot :
+        </p>
+        <ul>
+          <li>n’est ni échangeable, ni remboursable, ni convertible en espèces ;</li>
+          <li>peut, en cas d’indisponibilité, être remplacé par un lot de nature et de valeur équivalentes ;</li>
+          <li>est livré sans frais supplémentaires au gagnant en France métropolitaine, selon les modalités précisées par l’Organisateur.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>9. Responsabilités</h2>
+        <p>
+          L’Organisateur ne saurait être tenu responsable en cas de :
+        </p>
+        <ul>
+          <li>dysfonctionnement du réseau Internet ou de la plateforme de paiement ;</li>
+          <li>problème technique empêchant l’accès au site ou la validation d’une participation ;</li>
+          <li>perte, vol ou détérioration du lot après remise au transporteur ;</li>
+          <li>erreur ou omission dans les coordonnées fournies par le participant.</li>
+        </ul>
+        <p>
+          LePro se réserve le droit d’annuler, de reporter ou de modifier le Jeu en cas de circonstances exceptionnelles
+          indépendantes de sa volonté, sans que sa responsabilité ne puisse être engagée.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>10. Données personnelles</h2>
+        <p>
+          Les données collectées dans le cadre du Jeu (nom, prénom, pseudo, e-mail, adresse, téléphone, etc.) sont destinées à l’Organisateur
+          et utilisées uniquement pour :
+        </p>
+        <ul>
+          <li>gérer les participations ;</li>
+          <li>contacter le gagnant ;</li>
+          <li>assurer l’expédition du lot.</li>
+        </ul>
+        <p>
+          Ces données ne sont ni revendues, ni utilisées à des fins de prospection commerciale sans consentement explicite.
+        </p>
+        <p>
+          Conformément à la réglementation applicable en matière de protection des données personnelles, chaque participant dispose d’un droit d’accès,
+          de rectification et de suppression des données le concernant, qu’il peut exercer en écrivant à l’adresse de contact indiquée sur le site WinCenter.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>11. Acceptation du règlement</h2>
+        <p>
+          La participation au Jeu implique l’acceptation pleine et entière du présent règlement par le participant, sans possibilité de réserve.
+        </p>
+        <p>
+          L’Organisateur se réserve le droit de refuser la participation de toute personne ne respectant pas le règlement ou adoptant un comportement frauduleux.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>12. Droit applicable et litiges</h2>
+        <p>
+          Le présent règlement est soumis au droit français.
+        </p>
+        <p>
+          Tout litige relatif au Jeu qui ne pourrait être réglé à l’amiable sera soumis aux tribunaux compétents du ressort de l’Organisateur.
+        </p>
+        <p style="font-size:12px; color:var(--text-muted); margin-top:6px;">
+          Ce règlement est un exemple de texte pour ton site de démonstration WinCenter. 
+          Pour un dispositif réel de tirage avec participation financière, il est indispensable de consulter un professionnel du droit
+          afin d’adapter les modalités et de vérifier la conformité de l’opération avec la réglementation en vigueur (jeux, loteries, etc.).
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>© 2025 WinCenter – Règlement du tirage (maquette).</div>
+      <div>LePro</div>
+    </footer>
+  </div>
+</body>
+</html>

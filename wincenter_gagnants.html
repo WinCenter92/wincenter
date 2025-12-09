@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>WinCenter – Gagnants</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Historique des gagnants WinCenter – tous les gagnants des tirages." />
+  <style>
+    :root {
+      --bg-dark: #050816;
+      --primary: #2563eb;
+      --primary-soft: #1d4ed8;
+      --accent: #facc15;
+      --accent-soft: rgba(250,204,21,0.18);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-soft: #1f2937;
+      --card-bg: rgba(15,23,42,0.95);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+
+    body {
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration:none; }
+
+    .page { max-width:1100px; margin:0 auto; padding:24px 16px 48px; }
+
+    /* HEADER */
+    .header {
+      display:flex; justify-content:space-between; align-items:center;
+      margin-bottom:32px;
+    }
+
+    .logo { display:flex; align-items:center; gap:10px; }
+    .logo-mark {
+      width:38px; height:38px; border-radius:999px;
+      background: radial-gradient(circle at 30% 20%, #facc15, #f97316 35%, #1d4ed8 100%);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800; font-size:18px;
+      box-shadow:0 0 22px rgba(250,204,21,0.4);
+    }
+
+    .logo-text-main { font-weight:800; font-size:20px; text-transform:uppercase; letter-spacing:0.04em; }
+    .logo-text-sub { font-size:11px; text-transform:uppercase; color:var(--text-muted); letter-spacing:0.16em; }
+
+    .nav { display:flex; flex-wrap:wrap; gap:18px; font-size:14px; color:var(--text-muted); }
+    .nav a { position:relative; padding-bottom:2px; }
+    .nav a:hover,
+    .nav a.active { color:var(--text-main); }
+    .nav a::after {
+      content:""; position:absolute; left:0; bottom:-3px;
+      width:0; height:2px;
+      background:linear-gradient(90deg,#facc15,#22c55e);
+      transition:width .15s ease-out;
+    }
+    .nav a:hover::after,
+    .nav a.active::after { width:100%; }
+    /* MAIN CONTENT */
+    .title-block {
+      max-width:680px;
+      margin:0 auto 24px;
+      text-align:center;
+    }
+
+    .page-title {
+      font-size:24px;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .page-subtitle {
+      font-size:14px;
+      color:var(--text-muted);
+    }
+
+    /* WINNERS LAYOUT */
+    .winners-wrapper {
+      margin-top:24px;
+    }
+
+    .year-group {
+      margin-bottom:26px;
+    }
+
+    .year-header {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:14px;
+    }
+
+    .year-pill {
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:0.16em;
+      color:var(--text-muted);
+    }
+
+    .year-line {
+      flex:1;
+      height:1px;
+      background:linear-gradient(90deg,rgba(148,163,184,0.7),rgba(148,163,184,0));
+    }
+
+    .winner-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:14px;
+    }
+
+    .winner-card {
+      position:relative;
+      border-radius:14px;
+      border:1px solid rgba(31,41,55,0.9);
+      background:var(--card-bg);
+      padding:14px 14px 16px;
+      overflow:hidden;
+    }
+
+    .winner-card::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at top left, var(--accent-soft), transparent 55%);
+      opacity:0.6;
+      pointer-events:none;
+    }
+
+    .winner-inner {
+      position:relative;
+      z-index:1;
+    }
+
+    .winner-meta-top {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:8px;
+      gap:8px;
+    }
+
+    .winner-month {
+      font-size:13px;
+      padding:3px 9px;
+      border-radius:999px;
+      background:rgba(15,23,42,0.9);
+      border:1px solid rgba(148,163,184,0.6);
+      color:var(--text-muted);
+    }
+
+    .winner-lot {
+      font-size:13px;
+      color:var(--text-main);
+      font-weight:500;
+      text-align:right;
+    }
+
+    .winner-label {
+      margin-top:4px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:0.12em;
+      color:var(--text-muted);
+    }
+
+    .winner-name {
+      margin-top:4px;
+      font-size:20px;
+      font-weight:800;
+      color:var(--accent);
+      text-shadow:0 0 10px rgba(250,204,21,0.5);
+    }
+
+    .winner-extra {
+      margin-top:6px;
+      font-size:12px;
+      color:var(--text-muted);
+    }
+
+    .footer {
+      margin-top:28px;
+      padding-top:14px;
+      border-top:1px solid rgba(31,41,55,0.9);
+      font-size:11px;
+      color:var(--text-muted);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="header">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">W</div>
+        <div>
+          <div class="logo-text-main">WinCenter</div>
+          <div class="logo-text-sub">Le centre des gagnants</div>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html">Présentation</a>
+        <a href="wincenter_inscription.html">Inscription</a>
+        <a href="wincenter_reglement.html">Règlement</a>
+        <a href="wincenter_gagnants.html" class="active">Gagnants</a>
+        <a href="wincenter_contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="title-block">
+        <h1 class="page-title">Historique des gagnants</h1>
+     </section>
+
+      <section class="winners-wrapper">
+
+        <!--
+          🔧 MODE D'EMPLOI POUR AJOUTER UN GAGNANT
+          - Duplique un bloc .winner-card
+          - Mets à jour :
+              .winner-month  → mois + année (ex : "Décembre 2025")
+              .winner-lot    → nom du lot (ex : "PlayStation 5 Slim – Édition Digitale")
+              .winner-name   → pseudo gagnant (ex : "PseudoDuBoss")
+          - Classe les gagnants du plus récent au plus ancien.
+        -->
+
+        <!-- Exemple pour l'année 2025 -->
+                <div class="year-group">
+          <div class="year-header">
+            <div class="year-pill">2025</div>
+            <div class="year-line"></div>
+          </div>
+
+          <div class="winner-grid">
+
+            <!-- Septembre 2025 – iPad Pro 13" 2024 -->
+            <article class="winner-card">
+              <div class="winner-inner">
+                <div class="winner-meta-top">
+                  <span class="winner-month">Septembre 2025</span>
+                  <span class="winner-lot">iPad Pro 13"</span>
+                </div>
+                <div class="winner-label">Gagnant</div>
+                <div class="winner-name">Laure-63022</div>
+              </div>
+            </article>
+
+        
+
+            <!-- Octobre 2025 – Apple TV 4K -->
+            <article class="winner-card">
+              <div class="winner-inner">
+                <div class="winner-meta-top">
+                  <span class="winner-month">Octobre 2025</span>
+                  <span class="winner-lot">Apple TV 4K</span>
+                </div>
+                <div class="winner-label">Gagnant</div>
+                <div class="winner-name">Pinamo</div>
+              </div>
+            </article>
+
+            <!-- Novembre 2025 – TV LG LED 55&quot; -->
+            <article class="winner-card">
+              <div class="winner-inner">
+                <div class="winner-meta-top">
+                  <span class="winner-month">Novembre 2025</span>
+                  <span class="winner-lot">TV LG LED 55</span>
+                </div>
+                <div class="winner-label">Gagnant</div>
+                <div class="winner-name">Tech_49</div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+        <!-- Tu pourras copier/coller ce bloc year-group pour 2026, 2027, etc. -->
+
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>© 2025 WinCenter – Page des gagnants</div>
+      <div>LePro</div>
+    </footer>
+
+  </div>
+</body>
+</html>

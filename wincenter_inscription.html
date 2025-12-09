@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>WinCenter – Inscription</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Inscription au tirage WinCenter – PlayStation 5 Slim." />
+  <style>
+    :root {
+      --bg-dark: #050816;
+      --primary: #2563eb;
+      --primary-soft: #1d4ed8;
+      --accent: #facc15;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-soft: #1f2937;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+
+    body {
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration:none; }
+
+    .page { max-width:1100px; margin:0 auto; padding:24px 16px 48px; }
+
+    /* HEADER */
+    .header { display:flex; justify-content:space-between; align-items:center; margin-bottom:32px; }
+    .logo { display:flex; align-items:center; gap:10px; }
+    .logo-mark {
+      width:38px; height:38px; border-radius:999px;
+      background: radial-gradient(circle at 30% 20%, #facc15, #f97316 35%, #1d4ed8 100%);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800; font-size:18px;
+      box-shadow:0 0 22px rgba(250,204,21,0.4);
+    }
+    .logo-text-main { font-weight:800; font-size:20px; text-transform:uppercase; letter-spacing:0.04em; }
+    .logo-text-sub { font-size:11px; text-transform:uppercase; color:var(--text-muted); letter-spacing:0.16em; }
+
+    .nav { display:flex; flex-wrap:wrap; gap:18px; font-size:14px; color:var(--text-muted); }
+    .nav a { position:relative; padding-bottom:2px; }
+    .nav a:hover,
+    .nav a.active { color:var(--text-main); }
+    .nav a::after {
+      content:""; position:absolute; left:0; bottom:-3px;
+      width:0; height:2px;
+      background:linear-gradient(90deg,#facc15,#22c55e);
+      transition:width .15s ease-out;
+    }
+    .nav a:hover::after,
+    .nav a.active::after { width:100%; }
+    /* FORM CONTAINER */
+    .section {
+      background:rgba(15,23,42,0.9);
+      border:1px solid rgba(31,41,55,0.9);
+      border-radius:16px;
+      padding:24px 22px 26px;
+      max-width:700px;
+    }
+
+    .section-title { font-size:22px; margin-bottom:6px; font-weight:700; }
+    .section-desc { font-size:15px; color:var(--text-muted); margin-bottom:18px; }
+
+    form label {
+      display:block;
+      font-size:14px;
+      margin-bottom:4px;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"] {
+      width:100%;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid var(--border-soft);
+      background:#020617;
+      color:var(--text-main);
+      margin-bottom:14px;
+      font-size:15px;
+    }
+
+    .btn {
+      display:inline-block;
+      padding:12px 22px;
+      border-radius:999px;
+      font-size:15px;
+      font-weight:600;
+      cursor:pointer;
+      background:linear-gradient(135deg,var(--primary),var(--primary-soft));
+      color:white;
+      border:none;
+      margin-top:20px;
+      box-shadow:0 12px 30px rgba(37,99,235,0.45);
+    }
+
+    .checkbox-row {
+      margin-top:6px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:14px;
+      color:var(--text-muted);
+    }
+    .checkbox-row input[type="checkbox"] {
+      width:18px;
+      height:18px;
+      margin:0;
+    }
+
+    /* LAYOUT */
+    .content-wrap {
+      display:flex;
+      justify-content:space-between;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+    .content-left {
+      flex:1 1 360px;
+    }
+    .content-right {
+      flex:1 1 280px;
+      font-size:14px;
+      color:var(--text-muted);
+    }
+    .info-box {
+      background:rgba(15,23,42,0.85);
+      border:1px solid rgba(31,41,55,0.9);
+      border-radius:14px;
+      padding:14px 14px 16px;
+    }
+    .info-title {
+      font-size:15px;
+      margin-bottom:6px;
+      font-weight:600;
+    }
+    .info-box p { margin-bottom:6px; }
+
+    @media (max-width:900px){
+      .content-wrap { flex-direction:column; }
+    }
+
+    .footer {
+      margin-top:20px;
+      padding-top:14px;
+      border-top:1px solid rgba(31,41,55,0.9);
+      font-size:11px;
+      color:var(--text-muted);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    /* Erreurs de validation */
+    .input-error {
+      border-color:#ef4444;
+      box-shadow:0 0 0 1px rgba(239,68,68,0.6);
+    }
+  </style>
+
+  <script>
+    function validateForm() {
+      const form = document.querySelector("form");
+      const pseudo = form.querySelector('[name="entry.2057476618"]');
+      const nom = form.querySelector('[name="entry.970004073"]');
+      const prenom = form.querySelector('[name="entry.15951352"]');
+      const adresse = form.querySelector('[name="entry.1700365595"]');
+      const cp = form.querySelector('[name="entry.660125147"]');
+      const ville = form.querySelector('[name="entry.314879901"]');
+      const tel = form.querySelector('[name="entry.2056084021"]');
+      const email = form.querySelector('[name="entry.209986429"]');
+      const conditions = form.querySelector("#conditions");
+
+      const fields = [pseudo, nom, prenom, adresse, cp, ville, tel, email];
+
+      // reset styles
+      fields.forEach(f => f.classList.remove("input-error"));
+      conditions.classList.remove("input-error");
+
+      const errors = [];
+
+      // champs vides (en plus du required natif)
+      fields.forEach(f => {
+        if (!f.value.trim()) {
+          f.classList.add("input-error");
+          errors.push("Tous les champs marqués d'une * doivent être remplis.");
+        }
+      });
+
+      // Téléphone : 10 chiffres, commence par 0
+      const telClean = tel.value.replace(/\s+/g, "");
+      if (!/^0[1-9][0-9]{8}$/.test(telClean)) {
+        tel.classList.add("input-error");
+        errors.push("Le numéro de téléphone doit contenir 10 chiffres et commencer par 0 (ex : 0612345678).");
+      }
+
+      // Code postal : 5 chiffres
+      if (!/^[0-9]{5}$/.test(cp.value.trim())) {
+        cp.classList.add("input-error");
+        errors.push("Le code postal doit contenir exactement 5 chiffres.");
+      }
+
+      // Email : contrôle supplémentaire
+      const emailVal = email.value.trim();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(emailVal)) {
+        email.classList.add("input-error");
+        errors.push("L'adresse e-mail ne semble pas valide.");
+      }
+
+      // Conditions générales
+      if (!conditions.checked) {
+        conditions.classList.add("input-error");
+        errors.push("Tu dois accepter le règlement du tirage pour continuer.");
+      }
+
+      if (errors.length > 0) {
+        alert("Merci de corriger les points suivants avant de valider :\n\n- " + [...new Set(errors)].join("\n- "));
+        return false; // bloque l'envoi
+      }
+
+      // Tout est OK -> on laisse partir vers Google Forms puis redirection paiement
+      return afterSubmit();
+    }
+
+    // Après envoi vers Google Forms, on redirige vers la page de paiement
+    function afterSubmit() {
+      setTimeout(function () {
+        window.location.href = "wincenter_paiement.html";
+      }, 500);
+      return true;
+    }
+  </script>
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="header">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">W</div>
+        <div>
+          <div class="logo-text-main">WinCenter</div>
+          <div class="logo-text-sub">Le centre des gagnants</div>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html">Présentation</a>
+        <a href="wincenter_inscription.html" class="active">Inscription</a>
+        <a href="wincenter_reglement.html">Règlement</a>
+        <a href="wincenter_gagnants.html">Gagnants</a>
+        <a href="wincenter_contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main class="content-wrap">
+      <div class="content-left">
+        <section class="section">
+          <h1 class="section-title">Inscription au tirage du mois</h1>
+          <p class="section-desc">
+            Remplis le formulaire ci-dessous pour participer. Tes informations seront enregistrées dans Google Forms / Google Sheets puis tu seras redirigé vers la page de paiement.
+          </p>
+
+          <form action="https://docs.google.com/forms/d/e/1FAIpQLSczqYcHoYBThXr9ebFgW9ni-lkhRPQzWL42S6VztBaV-SPJ7A/formResponse"
+                method="POST"
+                target="hidden_iframe"
+                onsubmit="return validateForm();">
+
+            <!-- Pseudo -->
+            <label>Pseudo *</label>
+            <input type="text" name="entry.2057476618" required placeholder="Ton pseudo" />
+
+            <!-- Nom -->
+            <label>Nom *</label>
+            <input type="text" name="entry.970004073" required />
+
+            <!-- Prénom -->
+            <label>Prénom *</label>
+            <input type="text" name="entry.15951352" required />
+
+            <!-- Adresse -->
+            <label>Adresse *</label>
+            <input type="text" name="entry.1700365595" required placeholder="12 Rue Exemple" />
+
+            <!-- Code postal -->
+            <label>Code postal *</label>
+            <input type="text" name="entry.660125147" required placeholder="75000" />
+
+            <!-- Ville -->
+            <label>Ville *</label>
+            <input type="text" name="entry.314879901" required placeholder="Paris" />
+
+            <!-- Téléphone -->
+            <label>Téléphone *</label>
+            <input type="tel" name="entry.2056084021" required placeholder="0612345678" />
+
+            <!-- Email -->
+            <label>Adresse e-mail *</label>
+            <input type="email" name="entry.209986429" required />
+
+            <div class="checkbox-row">
+              <input type="checkbox" id="conditions" name="conditions" required />
+              <label for="conditions">J’accepte le règlement du tirage.</label>
+            </div>
+
+            <button class="btn" type="submit">Valider mon inscription</button>
+          </form>
+
+          <!-- iframe cachée qui reçoit la réponse Google Forms -->
+          <iframe name="hidden_iframe" style="display:none;"></iframe>
+        </section>
+      </div>
+
+      <aside class="content-right">
+        <div class="info-box">
+          <div class="info-title">Rappel</div>
+          <p>🎁 Lot en jeu : <strong>PlayStation 5 Slim neuve</strong>.</p>
+          <p>💳 Participation indicative : 2&nbsp;€ (paiement sur la page suivante).</p>
+          <p>📅 Tirage effectué à la date annoncée sur la page de présentation.</p>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <div>© 2025 WinCenter – Inscription au tirage.</div>
+      <div>LePro</div>
+    </footer>
+
+  </div>
+</body>
+</html>

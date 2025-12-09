@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>WinCenter – Paiement sécurisé</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Paiement sécurisé de votre participation au tirage WinCenter organisé par LePro." />
+  <style>
+    :root {
+      --bg-dark: #050816;
+      --bg-card: #0b1220;
+      --primary: #2563eb;
+      --primary-soft: #1d4ed8;
+      --accent: #facc15;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-soft: #1f2937;
+      --danger: #f97373;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
+    body {
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #facc15, #f97316 35%, #1d4ed8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      box-shadow: 0 0 25px rgba(250, 204, 21, 0.4);
+    }
+    .logo-text-main {
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .logo-text-sub {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.16em;
+    }
+    .nav {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+    .nav a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav a:hover {
+      color: var(--text-main);
+    }
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #facc15, #22c55e);
+      transition: width 0.2s ease-out;
+    }
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 4.2vw, 36px);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .hero-title span.highlight {
+      background: linear-gradient(90deg, #facc15, #f97316, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      max-width: 560px;
+    }
+    .step {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .section {
+      margin-bottom: 24px;
+      padding: 18px 18px 20px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+    }
+    .section-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .section p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+    @media (max-width: 800px) {
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 16px;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      padding: 16px 16px 18px;
+    }
+
+    .summary-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+    .summary-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .summary-tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      color: #bbf7d0;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-top: 6px;
+      color: var(--text-muted);
+    }
+    .summary-row strong {
+      color: var(--text-main);
+    }
+    .summary-total {
+      border-top: 1px dashed rgba(55, 65, 81, 0.9);
+      margin-top: 10px;
+      padding-top: 10px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .info-badge {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 11px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, background 0.12s ease-out;
+      white-space: nowrap;
+      margin-right: 8px;
+      margin-top: 6px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+      color: white;
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.45);
+      width: 100%;
+      justify-content: center;
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 35px rgba(37, 99, 235, 0.55);
+    }
+
+    .secure-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+    .secure-text span {
+      font-weight: 500;
+      color: #a7f3d0;
+    }
+
+    .notice {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 10px;
+      line-height: 1.4;
+    }
+
+    .footer {
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">W</div>
+        <div>
+          <div class="logo-text-main">WinCenter</div>
+          <div class="logo-text-sub">Le centre des gagnants</div>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Présentation</a>
+        <a href="wincenter_inscription.html">Inscription</a>
+        <a href="wincenter_reglement.html">Règlement</a>
+        <a href="wincenter_gagnants.html">Gagnants</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="step">Étape 2 / 2 – Paiement sécurisé</div>
+        <h1 class="hero-title">
+          Finalise ta participation<br />
+          au tirage <span class="highlight">WinCenter</span>
+        </h1>
+        <p class="hero-subtitle">
+          Tu as renseigné tes informations sur la page d’inscription. Il ne te reste plus qu’à régler ta participation pour valider ton ticket au tirage du lot du mois.
+        </p>
+
+        <div class="grid-2">
+          <!-- Résumé commande -->
+          <div class="card">
+            <div class="summary-header">
+              <div class="summary-title">Récapitulatif de la participation</div>
+              <div class="summary-tag">Lot du mois</div>
+            </div>
+            <p style="font-size:13px; color:var(--text-muted); margin-bottom:4px;">
+              Tirage en cours : <strong>PlayStation 5 Slim</strong>
+            </p>
+
+            <div class="summary-row">
+              <span>Participation au tirage</span>
+              <span><strong>2,00&nbsp;€</strong></span>
+            </div>
+            <div class="summary-row">
+              <span>Frais de traitement &amp; paiement en ligne</span>
+              <span>0,20&nbsp;€</span>
+            </div>
+
+            <div class="summary-row summary-total">
+              <span>Total à payer</span>
+              <span><strong>2,20&nbsp;€ TTC</strong></span>
+            </div>
+
+            <p style="font-size:11px; color:var(--text-muted); margin-top:8px;">
+              En validant le paiement, tu confirmes avoir lu et accepté le règlement du tirage WinCenter organisé par <strong>LePro</strong>.
+            </p>
+          </div>
+
+          <!-- Bloc paiement -->
+          <div class="card">
+            <div class="info-badge">
+              🔐 Paiement 100&nbsp;% sécurisé via Stripe
+            </div>
+            <p style="font-size:13px; color:var(--text-muted); margin-bottom:10px;">
+              Le paiement est traité par notre partenaire <strong>Stripe</strong>. Tes coordonnées bancaires ne sont jamais stockées sur WinCenter.
+            </p>
+
+            <!-- BOUTON DE PAIEMENT RÉEL : à remplacer par ton Payment Link Stripe -->
+            <a href="https://buy.stripe.com/TON-LIEN-DE-PAIEMENT" class="btn btn-primary">
+              Payer 2,20&nbsp;€ et valider ma participation
+            </a>
+
+            <p class="secure-text">
+              Tu seras redirigé vers la page de paiement sécurisée Stripe pour renseigner ta carte bancaire.
+              Une fois le paiement confirmé, ta participation au tirage sera <span>enregistrée automatiquement</span>.
+            </p>
+
+            <p class="notice">
+              💡 <strong>Important :</strong> ce site est un exemple de maquette. Pour un lancement réel, remplace le lien Stripe ci-dessus
+              par ton propre <em>Payment Link</em> créé dans ton tableau de bord Stripe, et fais vérifier la conformité de ton dispositif
+              (tirage, lot, participation payante) par un professionnel du droit.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>© 2025 WinCenter – Paiement sécurisé de la participation.</div>
+      <div>Site conçu par LePro – Intégration Stripe à configurer avant ouverture au public.</div>
+    </footer>
+  </div>
+</body>
+</html>
